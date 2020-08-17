@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.pack.dao.MovieBookingDao;
 import com.pack.entity.Movie;
 import com.pack.model.ErrorMessage;
+import com.pack.model.MovieModel;
 import com.pack.model.ResponseMessage;
 import com.pack.model.StatusMessage;
 import com.pack.service.MovieBookingService;
@@ -23,10 +24,14 @@ public class MovieBookingServiceImpl implements MovieBookingService {
 	private MovieBookingDao movieBookingDao;
 
 	@Override
-	public ResponseMessage createMovie(Movie movie) {
+	public ResponseMessage createMovie(MovieModel movieModel) {
 		ResponseMessage responseMessage = new ResponseMessage();
 
 		try {
+			Movie movie=new Movie();
+			movie.setRating(movieModel.getRating());
+			movie.setTitle(movieModel.getTitle());
+			movie.setCategory(movieModel.getCategory());
 			movieBookingDao.createMovie(movie);
 
 			responseMessage.setStatus(new StatusMessage("1", "  Movie is created successfully"));

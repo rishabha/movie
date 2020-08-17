@@ -1,11 +1,12 @@
 package com.pack.service;
 
-import com.pack.entity.Movie;
+
+import com.pack.model.MovieModel;
 import com.pack.model.ResponseMessage;
 
 public interface MovieBookingService {
 	
-	public ResponseMessage createMovie(Movie movie);
+	public ResponseMessage createMovie(MovieModel movie);
 	
 	public ResponseMessage getMovie(Long id);
 	
